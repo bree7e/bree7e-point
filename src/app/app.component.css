@@ -1,0 +1,109 @@
+h1 {
+    font-size: 70px;
+}
+
+.section__back {
+    overflow: hidden
+}
+
+.section__back img {
+    position: absolute;
+    left: 50%
+}
+
+.aqua-button {
+    display: inline-block;
+    position: relative;
+    text-align: center
+}
+
+.aqua-button__bg {
+    position: absolute;
+    top: 0;
+    left: -10px;
+    right: 0;
+    bottom: -8px;
+    background: url(/assets/button_1.png) left 5px no-repeat;
+    background-size: 100% 100%;
+    opacity: .6
+}
+
+.aqua-button__bg,.aqua-button__bg-opacity {
+    transition: opacity .3s ease-in-out .2s
+}
+
+.aqua-button__bg-opacity {
+    opacity: 0
+}
+
+.aqua-button__title {
+    display: inline-block;
+    position: relative;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 10px 30px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #231f20;
+    z-index: 1;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.aqua-button:before {
+    top: 0;
+    border-top: 2px solid
+}
+
+.aqua-button:after,.aqua-button:before {
+    position: absolute;
+    z-index: 0;
+    display: block;
+    left: 0;
+    right: 0;
+    height: 16px;
+    border-left: 2px solid;
+    border-right: 2px solid;
+    content: "";
+    border-color: #231f20
+}
+
+.aqua-button:after {
+    bottom: 0;
+    border-bottom: 2px solid
+}
+
+.aqua-button.__disable {
+    opacity: .5;
+    cursor: default
+}
+
+.aqua-button.__white:after,.aqua-button.__white:before {
+    border-color: #fff
+}
+
+.aqua-button.__white .aqua-button__title {
+    color: #fff
+}
+
+.aqua-button:not(.__disable):hover .aqua-button__bg,.aqua-button:not(.__disable):hover .aqua-button__bg-opacity {
+    opacity: .8;
+    transition: opacity .4s ease-out .2s
+}
+
+@media screen and (max-width: 639px),screen and (min-width:640px) and (max-width:1023px) {
+    .aqua-button__title {
+        padding:8px 26px
+    }
+
+    .aqua-button__bg-opacity {
+        opacity: .8
+    }
+
+    .aqua-button:after,.aqua-button:before {
+        height: 12px
+    }
+}
