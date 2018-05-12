@@ -6,7 +6,16 @@
     </div>
 </div>
 
+<nav>
+    <a routerLink="/timeline">Timeline</a>
+    <a routerLink="/timeline/transactions/:id">Транзация</a>
+    <a routerLink="/timeline/news/:id">Новость</a>
+</nav>
+
+<router-outlet></router-outlet>
+
 <div class="aqua-button">
     <span class="aqua-button__bg"></span>
-    <a href="#section-page-request" class="aqua-button__title">Добавить</a>
+    <a routerLink="/timeline/add" class="aqua-button__title">Добавить</a>
 </div>
+
