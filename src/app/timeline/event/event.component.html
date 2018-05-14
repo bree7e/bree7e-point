@@ -1,3 +1,4 @@
-<p>
-  event id = {{ event.id }}
-</p>
+<ng-container [ngSwitch]="event.type">
+    <app-news-item *ngSwitchCase="'NewsEvent'" [event]="event"></app-news-item>
+    <app-transaction-item *ngSwitchCase="'TransactionEvent'" [event]="event"></app-transaction-item>
+</ng-container>

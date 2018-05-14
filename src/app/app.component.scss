@@ -1,0 +1,12 @@
+// src/app/app.component.scss
+
+@import '~src/styles/variables';
+
+.section__back {
+    overflow: hidden;
+}
+
+.section__back img {
+    position: absolute;
+    left: 50%
+}

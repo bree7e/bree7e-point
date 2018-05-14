@@ -15,7 +15,7 @@ export class TimelinePageComponent implements OnInit {
 
   ngOnInit() {
     // TransactionEvent|NewsEvent
-    debugger;
+    // debugger;
     this.events.push(new TransactionEvent('1', new Date(), Currencies.RUB, 500, 'Горнов А.В.'));
     this.events.push(new TransactionEvent('2', new Date(), Currencies.EUR, 30, 'Петров А.В.'));
     this.events.push(new TransactionEvent('3', new Date(), Currencies.USD, -20, 'Иванов А.В.'));
