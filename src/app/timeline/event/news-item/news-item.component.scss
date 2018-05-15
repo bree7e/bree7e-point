@@ -1,5 +1,15 @@
+@import '~src/styles/variables';
+
 .news {
-    &__title {
-        // color: #a3a2a2;
+    padding: 15px;
+    font-weight: 700;
+    &--read {
+        font-weight: 400;
+        color: $tochka-colors-text-light-gray;
+        background-color: $tochka-colors-background-pay-yellow;
     }
+    &:hover {
+        background-color: $tochka-colors-background-highlight-solid;
+        cursor: pointer;
+    }    
 }

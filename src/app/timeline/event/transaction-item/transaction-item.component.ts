@@ -13,4 +13,8 @@ export class TransactionItemComponent implements OnInit {
     constructor() {}
 
     ngOnInit() {}
+
+    lessThanZero() {
+        return this.event.amount > 0;
+    }
 }

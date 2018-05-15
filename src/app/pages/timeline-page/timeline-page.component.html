@@ -2,12 +2,10 @@
     <h2 class="timeline__title">Timeline</h2>
     <app-event-sorting></app-event-sorting>
     <div class="timeline__list">
-        <app-event-list
-            [eventList]="events"
-        ></app-event-list>
-        <div class="aqua-button">
-            <span class="aqua-button__bg"></span>
-            <a routerLink="/timeline/add" class="aqua-button__title">Добавить</a>
-        </div>
+        <app-event-list [eventList]="events"></app-event-list>
+    </div>
+    <div class="aqua-button">
+        <span class="aqua-button__bg"></span>
+        <a class="aqua-button__title" routerLink="/timeline/add" >Добавить</a>
     </div>
 </div>

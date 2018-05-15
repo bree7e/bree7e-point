@@ -1,16 +1,16 @@
 <div class="transaction" routerLink="transactions/{{ event.id }}">
-    <span class="transaction__date">
+    <div class="transaction__date">
         {{ event.date | date:"dd.MM.yyyy" }}
-    </span>
-    <span class="transaction__amount"
-        [class.tochka-colors-text-green]="event.amount >= 0" 
-        [class.tochka-colors-text-red]="event.amount < 0">
-        <span class="transaction__plus-sign" *ngIf="event.amount >= 0">+</span>
-        {{ event.amount }} {{ event.currency }}
-    </span>
-    <span class="transaction__agent">
+    </div>
+    <div class="transaction__amount"
+        [class.transaction__amount--green]="event.amount >= 0" 
+        [class.transaction__amount--red]="event.amount < 0">
+        <span class="transaction__plus-sign" *ngIf="event.amount >= 0">+</span>{{ event.amount }}
+        {{ event.currency }}
+    </div>
+    <div class="transaction__agent">
         {{ event.agent }}
-    </span>
+    </div>
 </div>
 
 <!-- У финансовой транзакции в списке отображаем приход или расход 

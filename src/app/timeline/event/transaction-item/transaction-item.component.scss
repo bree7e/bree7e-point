@@ -1,14 +1,28 @@
+@import '~src/styles/variables';
+
 .transaction {
     font-weight: 700;
-    display: table-row;
+    padding: 15px;
+    display: flex;
     &__date {
-        color: #a3a2a2;
-        display: table-cell;
+        width: 100px;
+        color: $tochka-colors-text-light-gray;
     }
     &__amount {
-        display: table-cell;
+        width: 130px;
+        text-align: right;
+        &--green{
+            color: $tochka-colors-text-green;
+        }
+        &--red{
+            color: $tochka-colors-text-red;
+        }
     }
     &__agent {
-        display: table-cell;
+        margin-left: 25px;
+    }
+    &:hover {
+        background-color: $tochka-colors-background-highlight-solid;
+        cursor: pointer;
     }
 }

@@ -1,9 +1,11 @@
+@import '~src/styles/shadows';
+
 .timeline {
     &__list {
-        width: 800px;
+        max-width: 700px;
         padding: 25px 20px;
-        border-top: 1px solid rgba(0,0,0,0.05);
-        box-shadow: 0 3px 38px rgba(0,0,0,0.05), 0 0 12px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+        @include tochka-shadows-main;
         background-color: #fff;
     }
 }

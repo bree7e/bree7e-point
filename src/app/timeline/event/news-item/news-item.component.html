@@ -1,8 +1,9 @@
 <div class="news" 
+    [class.news--read]="event.isRead" 
     routerLink="news/{{ event.id }}">
-    <span class="news__title">
+    <div class="news__title">
         {{ event.title }}
-    </span>
+    </div>
 </div>
 
 <!-- У новости в списке отображаем только заголовок. 

@@ -1,0 +1,65 @@
+.aqua-button {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: -10px;
+        right: 0;
+        bottom: -8px;
+        background: url(/assets/button_1.png) left 5px no-repeat;
+        background-size: 100% 100%;
+        opacity: 0.6;
+    }
+    
+    &__bg,
+    &__bg-opacity {
+        transition: opacity 0.3s ease-in-out 0.2s;
+    }
+    
+    &__bg-opacity {
+        opacity: 0;
+    }
+    
+    &__title {
+        display: inline-block;
+        position: relative;
+        font-weight: 700;
+        cursor: pointer;
+        padding: 10px 30px;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        text-decoration: none;
+        color: #231f20;
+        z-index: 1;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    &:before {
+        top: 0;
+        border-top: 2px solid;
+    }
+
+    &:after,
+    &:before {
+        position: absolute;
+        z-index: 0;
+        display: block;
+        left: 0;
+        right: 0;
+        height: 16px;
+        border-left: 2px solid;
+        border-right: 2px solid;
+        content: '';
+        border-color: #231f20;
+    }
+
+    &:after {
+        bottom: 0;
+        border-bottom: 2px solid;
+    }
+}
