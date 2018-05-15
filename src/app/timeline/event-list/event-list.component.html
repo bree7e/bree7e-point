@@ -1,4 +1,4 @@
-<app-event 
-    *ngFor="let event of eventList"
-    [event]="event"
-></app-event>
+<ng-container *ngFor="let event of eventList" [ngSwitch]="event.type">
+    <app-news-item *ngSwitchCase="'NewsEvent'" [event]="event"></app-news-item>
+    <app-transaction-item *ngSwitchCase="'TransactionEvent'" [event]="event"></app-transaction-item>
+</ng-container>

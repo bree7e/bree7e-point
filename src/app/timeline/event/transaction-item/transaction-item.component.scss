@@ -1,6 +1,14 @@
 .transaction {
     font-weight: 700;
+    display: table-row;
     &__date {
         color: #a3a2a2;
+        display: table-cell;
+    }
+    &__amount {
+        display: table-cell;
+    }
+    &__agent {
+        display: table-cell;
     }
 }

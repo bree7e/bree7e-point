@@ -10,7 +10,6 @@ import { TimelinePageComponent } from './pages/timeline-page/timeline-page.compo
 import { AddEventPageComponent } from './pages/add-event-page/add-event-page.component';
 import { EventListComponent } from './timeline/event-list/event-list.component';
 import { EventSortingComponent } from './timeline/event-sorting/event-sorting.component';
-import { EventComponent } from './timeline/event/event.component';
 import { NewsItemComponent } from './timeline/event/news-item/news-item.component';
 import { TransactionItemComponent } from './timeline/event/transaction-item/transaction-item.component';
 
@@ -22,7 +21,6 @@ import { TransactionItemComponent } from './timeline/event/transaction-item/tran
         TimelinePageComponent,
         EventListComponent,
         EventSortingComponent,
-        EventComponent,
         AddEventPageComponent,
         NewsItemComponent,
         TransactionItemComponent,
