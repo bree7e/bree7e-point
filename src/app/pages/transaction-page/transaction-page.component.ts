@@ -17,7 +17,13 @@ export class TransactionPageComponent implements OnInit {
         private eventService: EventService
     ) {}
 
-  ngOnInit() {
-  }
+    ngOnInit(): void {
+        this.getTransaction();
+    }
+
+    getTransaction(): void {
+        const id = this.route.snapshot.paramMap.get('id');
+        this.eventService.getTransactionById(id).subscribe(t => (this.transaction = t));
+    }
 
 }

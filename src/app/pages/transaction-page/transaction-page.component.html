@@ -1,19 +1,32 @@
 <div class="transaction">
     <h2 class="transaction__title">Транзакция</h2>
     <div class="transaction__container">
-        <span class="transaction__date">20.05.2018 г.</span>
-        <div class="transaction__content">
-            <p>
-                transaction-page works!
-            </p>
+        <span class="transaction__date">{{ transaction.date | date:"dd.MM.yyyy" }}</span>
+        <div class="transaction__description">
+                {{ transaction.description }}
         </div>
-    </div>
-    <div class="aqua-button">
-        <span class="aqua-button__bg"></span>
-        <a routerLink="/timeline" class="aqua-button__title">timeline</a>
+        <div class="transaction__amount">
+                {{ transaction.amount }}
+        </div>
     </div>
     <div class="aqua-button">
         <span class="aqua-button__bg"></span>
         <a routerLink="/timeline" class="aqua-button__title">Удалить</a>
     </div>
+    <div class="link-button">
+        <a routerLink="/" class="">Вернуться</a>
+    </div>
 </div>
+
+<!-- Финансовая транзакция:
+Сумма транзакции
+Валюта
+От кого транзакция
+Описание
+Приход или расход
+Дата
+Тип события
+
+При клике на событие открываем подробную информацию, 
+либо переход на отдельный роут в рамках вашего приложения, 
+либо красиво открыть на той же странице, где есть описание и кнопка “Удалить”. -->

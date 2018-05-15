@@ -1,11 +1,9 @@
 import { Currencies } from './currencies.enum';
 
 export abstract class TimelineEvent {
-    constructor(private _id: string, public date: Date) {}
+    public id: string;
 
-    get id(): string {
-        return this._id;
-    }
+    constructor(public date: Date) {}
 
     get type() {
         return this.constructor.name;
@@ -14,25 +12,25 @@ export abstract class TimelineEvent {
 
 export class NewsEvent extends TimelineEvent {
     constructor(
-        id: string,
         public title: string,
         public content: string,
         date: Date = new Date(),
         public isRead = false
     ) {
-        super(id, date);
+        super(date);
     }
 }
 
 export class TransactionEvent extends TimelineEvent {
     constructor(
-        id: string,
         date: Date,
         public currency = Currencies.RUB,
         public amount: number,
         public agent: string,
         public description: string = ''
     ) {
-        super(id, date);
+        super(date);
     }
 }
+
+export type EventTypes = NewsEvent | TransactionEvent;

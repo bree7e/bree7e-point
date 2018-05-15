@@ -1,15 +1,15 @@
 <div class="news">
-    <h2 class="news__title">Новость</h2>
+    <h2 class="news__title">{{ news.title }}</h2>
     <div class="news__container">
-        <span class="news__date">20.05.2018 г.</span>
+        <span class="news__date">{{ news.date | date:"dd.MM.yyyy" }}</span>
         <div class="news__content">
-            <p>
-                news-page works!
-            </p>
+            {{ news.content }}
         </div>
     </div>
     <div class="aqua-button">
         <span class="aqua-button__bg"></span>
-        <a routerLink="/timeline" class="aqua-button__title">timeline</a>
+        <a routerLink="/timeline" class="aqua-button__title">Прочитано</a>
     </div>
 </div>
+
+<!-- public isRead = false -->

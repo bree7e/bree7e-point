@@ -2,10 +2,6 @@
 
 .timeline {
     &__list {
-        max-width: 700px;
-        padding: 25px 20px;
-        margin-bottom: 20px;
-        @include tochka-shadows-main;
-        background-color: #fff;
+        @include page-block;
     }
 }

@@ -1,39 +1,44 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
-import { NewsEvent, TransactionEvent, TimelineEvent } from 'src/app/shared/timeline-event';
+import {
+    NewsEvent,
+    TransactionEvent,
+    EventTypes
+} from 'src/app/shared/timeline-event';
 
 // TODO глобально заменить все TimelineEvent на возвращаемые общий тип NewsEvent | TransactionEvent
 @Injectable({
     providedIn: 'root'
 })
 export class EventService {
-    private events: TimelineEvent[];
+    private id = 0;
+    private events: EventTypes[] = [];
 
     constructor() {}
 
-    getEvents(): Observable<TimelineEvent[]> {
+    getEvents(): Observable<EventTypes[]> {
         return of(this.events);
     }
 
-    // getHero(id: number): Observable<Hero> {
-    //     const url = `${this.heroesUrl}/${id}`;
-    //     return this.http
-    //         .get<Hero>(url)
-    //         .pipe(
-    //             tap(_ => this.log(`fetched hero id=${id}`)),
-    //             catchError(this.handleError<Hero>(`getHero id=${id}`))
-    //         );
-    // }
-
-    getEvent(id: number, classType): Observable<NewsEvent>  {
-        // instanceof
-        return;
+    getNewsById(id: string): Observable<NewsEvent> {
+        const news = <NewsEvent>this.events
+            .filter(event => event instanceof NewsEvent)
+            .find(event => event.id === id);
+        return of(news);
     }
 
-    addEvent(event: TimelineEvent) {
-        return;
+    getTransactionById(id: string): Observable<TransactionEvent> {
+        const transaction = <TransactionEvent>this.events
+            .filter(event => event instanceof TransactionEvent)
+            .find(event => event.id === id);
+        return of(transaction);
+    }
+
+    addEvent(event: EventTypes): void {
+        event.id = String(this.id++);
+        this.events.push(event);
     }
 }

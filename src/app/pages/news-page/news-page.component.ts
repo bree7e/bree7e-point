@@ -17,10 +17,12 @@ export class NewsPageComponent implements OnInit {
         private eventService: EventService
     ) {}
 
-    ngOnInit() {}
+    ngOnInit(): void {
+        this.getNews();
+    }
 
     getNews(): void {
-        const id = +this.route.snapshot.paramMap.get('id');
-        this.eventService.getEvent(id, NewsEvent).subscribe(news => (this.news = news));
+        const id = this.route.snapshot.paramMap.get('id');
+        this.eventService.getNewsById(id).subscribe(news => (this.news = news));
     }
 }
