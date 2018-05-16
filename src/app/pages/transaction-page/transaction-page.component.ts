@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { EventService } from 'src/app/timeline/event.service';
 import { TransactionEvent } from 'src/app/shared/timeline-event';
+import { EventTypes } from '../../shared/event-types.enum';
 
 @Component({
   selector: 'app-transaction-page',
@@ -23,7 +24,8 @@ export class TransactionPageComponent implements OnInit {
 
     getTransaction(): void {
         const id = this.route.snapshot.paramMap.get('id');
-        this.eventService.getTransactionById(id).subscribe(t => (this.transaction = t));
+        this.eventService.getEvent(id, EventTypes.Transaction)
+            .subscribe(t => (this.transaction = t));
     }
 
 }

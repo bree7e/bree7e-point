@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { NewsEvent } from 'src/app/shared/timeline-event';
 import { EventService } from 'src/app/timeline/event.service';
+import { EventTypes } from 'src/app/shared/event-types.enum';
 
 @Component({
     selector: 'app-news-page',
@@ -23,6 +24,7 @@ export class NewsPageComponent implements OnInit {
 
     getNews(): void {
         const id = this.route.snapshot.paramMap.get('id');
-        this.eventService.getNewsById(id).subscribe(news => (this.news = news));
+        this.eventService.getEvent(id, EventTypes.News)
+            .subscribe(news => (this.news = news));
     }
 }

@@ -33,4 +33,4 @@ export class TransactionEvent extends TimelineEvent {
     }
 }
 
-export type EventTypes = NewsEvent | TransactionEvent;
+export type TimelineTypes = NewsEvent | TransactionEvent;

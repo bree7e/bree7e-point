@@ -10,19 +10,19 @@ import { NewsEvent } from 'src/app/shared/timeline-event';
   styleUrls: ['./add-event-page.component.scss']
 })
 export class AddEventPageComponent implements OnInit {
-  private newEvent = new NewsEvent('', '', '');
-  
-  @Output() 
-  addTimelineEvent: EventEmitter<NewsEvent> = new EventEmitter();  
+  private newEvent = new NewsEvent('', '');
+
+  @Output()
+  addTimelineEvent: EventEmitter<NewsEvent> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-    
+
   }
 
   add() {
-    console.log('addTimelineEvent click')
+    console.log('addTimelineEvent click');
   }
-  
+
 }

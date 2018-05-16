@@ -1,43 +1,45 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, delay } from 'rxjs/operators';
 
 import {
     NewsEvent,
     TransactionEvent,
-    EventTypes
+    TimelineTypes
 } from 'src/app/shared/timeline-event';
+import { EventTypes } from 'src/app/shared/event-types.enum';
 
-// TODO глобально заменить все TimelineEvent на возвращаемые общий тип NewsEvent | TransactionEvent
 @Injectable({
     providedIn: 'root'
 })
 export class EventService {
     private id = 0;
-    private events: EventTypes[] = [];
+    private events: TimelineTypes[] = [];
 
     constructor() {}
 
-    getEvents(): Observable<EventTypes[]> {
-        return of(this.events);
+    getEvents(): Observable<TimelineTypes[]> {
+        const events$ = of(this.events).pipe(delay(2500));
+        return events$;
     }
 
-    getNewsById(id: string): Observable<NewsEvent> {
-        const news = <NewsEvent>this.events
-            .filter(event => event instanceof NewsEvent)
-            .find(event => event.id === id);
-        return of(news);
+    getEvent(id: string, type: EventTypes.News): Observable<NewsEvent>;
+    getEvent(id: string, type: EventTypes.Transaction): Observable<TransactionEvent>;
+    getEvent(id: string, type: EventTypes): Observable<TimelineTypes> {
+        switch (type) {
+            case EventTypes.News:
+                return of(<NewsEvent>this.events
+                    .filter(event => event instanceof NewsEvent)
+                    .find(event => event.id === id));
+            case EventTypes.Transaction:
+                return of(<TransactionEvent>this.events
+                    .filter(event => event instanceof TransactionEvent)
+                    .find(event => event.id === id));
+            }
     }
 
-    getTransactionById(id: string): Observable<TransactionEvent> {
-        const transaction = <TransactionEvent>this.events
-            .filter(event => event instanceof TransactionEvent)
-            .find(event => event.id === id);
-        return of(transaction);
-    }
-
-    addEvent(event: EventTypes): void {
+    addEvent(event: TimelineTypes): void {
         event.id = String(this.id++);
         this.events.push(event);
     }

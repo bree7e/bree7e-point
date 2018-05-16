@@ -14,8 +14,7 @@ export class TimelinePageComponent implements OnInit {
     constructor(private eventService: EventService) {}
 
     getEvents(): void {
-        this.eventService
-            .getEvents()
+        this.eventService.getEvents()
             .subscribe(events => (this.events = events));
     }
 
