@@ -12,6 +12,8 @@ import { EventListComponent } from './timeline/event-list/event-list.component';
 import { EventSortingComponent } from './timeline/event-sorting/event-sorting.component';
 import { NewsItemComponent } from './timeline/event/news-item/news-item.component';
 import { TransactionItemComponent } from './timeline/event/transaction-item/transaction-item.component';
+import { NewsFormComponent } from 'src/app/timeline/event-form/news-form/news-form.component';
+import { TransactionFormComponent } from 'src/app/timeline/event-form/transaction-form/transaction-form.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +26,8 @@ import { TransactionItemComponent } from './timeline/event/transaction-item/tran
         AddEventPageComponent,
         NewsItemComponent,
         TransactionItemComponent,
+        NewsFormComponent,
+        TransactionFormComponent
     ],
     imports: [BrowserModule, AppRoutingModule, FormsModule],
     providers: [],
