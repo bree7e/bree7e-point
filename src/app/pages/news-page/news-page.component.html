@@ -1,6 +1,6 @@
 <div class="news">
-    <h2 class="news__title">{{ news.title }}</h2>
-    <div class="news__container">
+    <h2 class="news__title">{{ news?.title }}</h2>
+    <div class="news__container" *ngIf="news else loading">
         <span class="news__date">{{ news.date | date:"dd.MM.yyyy" }}</span>
         <div class="news__content">
             {{ news.content }}
@@ -11,5 +11,11 @@
         <a routerLink="/timeline" class="aqua-button__title">Прочитано</a>
     </div>
 </div>
+
+<ng-template #loading>
+    <div class="news__loader">
+        Загрузка...
+    </div>
+</ng-template>
 
 <!-- public isRead = false -->

@@ -20,7 +20,7 @@ export class EventService {
     constructor() {}
 
     getEvents(): Observable<TimelineTypes[]> {
-        const events$ = of(this.events).pipe(delay(2500));
+        const events$ = of(this.events).pipe(delay(1000));
         return events$;
     }
 
@@ -31,11 +31,11 @@ export class EventService {
             case EventTypes.News:
                 return of(<NewsEvent>this.events
                     .filter(event => event instanceof NewsEvent)
-                    .find(event => event.id === id));
+                    .find(event => event.id === id)).pipe(delay(1200));
             case EventTypes.Transaction:
                 return of(<TransactionEvent>this.events
                     .filter(event => event instanceof TransactionEvent)
-                    .find(event => event.id === id));
+                    .find(event => event.id === id)).pipe(delay(1200));
             }
     }
 
