@@ -9,6 +9,8 @@ import {
     TimelineTypes
 } from 'src/app/shared/timeline-event';
 import { EventTypes } from 'src/app/shared/event-types.enum';
+import { TimelineSorting, SortingOrder } from 'src/app/timeline/event-sorting/event-sorting.component';
+import { SortingTypes } from '../shared/sorting-types.enum';
 
 @Injectable({
     providedIn: 'root'
@@ -16,8 +18,11 @@ import { EventTypes } from 'src/app/shared/event-types.enum';
 export class EventService {
     private id = 0;
     private events: TimelineTypes[] = [];
+    private sorting: TimelineSorting;
 
-    constructor() {}
+    constructor() {
+        this.clearSorting();
+    }
 
     getEvents(): Observable<TimelineTypes[]> {
         const events$ = of(this.events).pipe(delay(250));
@@ -59,4 +64,31 @@ export class EventService {
             });
         return of(result).pipe(delay(500));
     }
+
+    clearSorting(): void {
+        this.sorting = {
+            type: SortingTypes.Date,
+            order: SortingOrder.Unsorted
+        };
+    }
+
+    setSorting(sorting: TimelineSorting): void {
+        this.sorting = sorting;
+        this.sortEvents();
+    }
+
+    sortEvents(): void {
+        this.events.sort((a, b) => {
+            let result = 0;
+            if (a[this.sorting.type] > b[this.sorting.type]) {
+                result = 1;
+            } else  {
+                result = -1;
+            }
+            result *= this.sorting.order;
+            return result;
+        });
+    }
+
+
 }

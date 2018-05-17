@@ -1,19 +1,18 @@
 <div class="timeline-sorting">
-    <div class="timeline-sorting__type" (click)="changeSorting(eventTypes.News)">
+    <div class="timeline-sorting__type" (click)="changeSorting(sortingTypes.Date)">
         Дата
-        <ng-container [ngSwitch]="timelineSorting.order" *ngIf="timelineSorting.type == eventTypes.News">
+        <ng-container [ngSwitch]="timelineSorting.order" *ngIf="timelineSorting.type == sortingTypes.Date">
             <span *ngSwitchCase="sortingOrder.Asc">↑</span>
             <span *ngSwitchCase="sortingOrder.Desc">↓</span>
         </ng-container>
         <span *ngIf="timelineSorting.order == sortingOrder.Unsorted">↑↓</span>
     </div>
-    <div class="timeline-sorting__type" (click)="changeSorting(eventTypes.Transaction)">
+    <div class="timeline-sorting__type" (click)="changeSorting(sortingTypes.Type)">
         Тип события
-        <ng-container [ngSwitch]="timelineSorting.order" *ngIf="timelineSorting.type == eventTypes.Transaction">
+        <ng-container [ngSwitch]="timelineSorting.order" *ngIf="timelineSorting.type == sortingTypes.Type">
             <span *ngSwitchCase="sortingOrder.Asc">↑</span>
             <span *ngSwitchCase="sortingOrder.Desc">↓</span>
         </ng-container>
         <span *ngIf="timelineSorting.order == sortingOrder.Unsorted">↑↓</span>
     </div>
-    timelineSorting = {{ timelineSorting.type }}
 </div>

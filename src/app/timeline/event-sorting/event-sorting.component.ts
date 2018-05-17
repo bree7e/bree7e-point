@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { TimelineEvent } from 'src/app/shared/timeline-event';
-import { EventTypes } from 'src/app/shared/event-types.enum';
+import { SortingTypes } from 'src/app/shared/sorting-types.enum';
 
 export enum SortingOrder {
     Unsorted = 0,
@@ -9,7 +9,7 @@ export enum SortingOrder {
     Desc = -1
 }
 export interface TimelineSorting {
-    type: EventTypes;
+    type: SortingTypes;
     order: SortingOrder;
 }
 
@@ -20,7 +20,7 @@ export interface TimelineSorting {
 })
 export class EventSortingComponent implements OnInit {
     public sortingOrder = SortingOrder;
-    public eventTypes = EventTypes;
+    public sortingTypes = SortingTypes;
     public timelineSorting: TimelineSorting;
     @Output() changeSortingType: EventEmitter<TimelineSorting> = new EventEmitter;
 
@@ -28,22 +28,20 @@ export class EventSortingComponent implements OnInit {
 
     ngOnInit() {
         this.timelineSorting = {
-            type: EventTypes.News,
+            type: SortingTypes.Date,
             order: SortingOrder.Unsorted
         };
     }
 
-    changeSorting(type: EventTypes) {
+    changeSorting(type: SortingTypes) {
         this.timelineSorting.type = type;
         switch (this.timelineSorting.order) {
             case SortingOrder.Unsorted:
+            case SortingOrder.Desc:
                 this.timelineSorting.order = SortingOrder.Asc;
                 break;
             case SortingOrder.Asc:
                 this.timelineSorting.order = SortingOrder.Desc;
-                break;
-            case SortingOrder.Desc:
-                this.timelineSorting.order = SortingOrder.Unsorted;
                 break;
         }
         this.changeSortingType.emit(this.timelineSorting);
