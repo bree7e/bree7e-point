@@ -11,7 +11,7 @@ import { Currencies } from '../../shared/currencies.enum';
 })
 export class AddEventPageComponent implements OnInit {
     private newEvent: TimelineTypes;
-    private type: EventTypes;
+    private eventType: EventTypes;
     // необходимо для доступа к enum из шаблона
     private types = EventTypes;
 
@@ -29,7 +29,7 @@ export class AddEventPageComponent implements OnInit {
     }
 
     changeType(newType: EventTypes) {
-        this.type = newType;
+        this.eventType = newType;
         switch (newType) {
             case EventTypes.News:
                 this.newEvent = new NewsEvent('', '');

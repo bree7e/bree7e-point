@@ -1,7 +1,11 @@
 <form class="transaction-form">
     <div class="transaction-form__currency">
         <label for="">Валюта</label>
-        <select name="" id=""></select>
+        <select> <!-- [(ngModel)]="eventType" -->
+            <ng-container *ngFor="let c of currencies">
+                <option value="c" [selected]="">{{c}}</option>
+            </ng-container>            
+        </select>
     </div>
     <div class="transaction-form__amount">
         <label for="">Сумма</label>
