@@ -63,3 +63,13 @@
         border-bottom: 2px solid;
     }
 }
+
+.link-button {
+    color: $tochka-colors-text-dark-blue;
+    display: inline-block;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 10px 30px;
+    text-decoration: none;
+    border-bottom: 1px dotted $tochka-colors-text-dark-blue;
+}

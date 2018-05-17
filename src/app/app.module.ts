@@ -4,16 +4,18 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { TransactionPageComponent } from './pages/transaction-page/transaction-page.component';
-import { NewsPageComponent } from './pages/news-page/news-page.component';
-import { TimelinePageComponent } from './pages/timeline-page/timeline-page.component';
 import { AddEventPageComponent } from './pages/add-event-page/add-event-page.component';
-import { EventListComponent } from './timeline/event-list/event-list.component';
+import { NewsPageComponent } from './pages/news-page/news-page.component';
+import { TransactionPageComponent } from './pages/transaction-page/transaction-page.component';
+import { TimelinePageComponent } from './pages/timeline-page/timeline-page.component';
 import { EventSortingComponent } from './timeline/event-sorting/event-sorting.component';
-import { NewsItemComponent } from './timeline/event/news-item/news-item.component';
-import { TransactionItemComponent } from './timeline/event/transaction-item/transaction-item.component';
-import { NewsFormComponent } from 'src/app/timeline/event-form/news-form/news-form.component';
-import { TransactionFormComponent } from 'src/app/timeline/event-form/transaction-form/transaction-form.component';
+import { EventListComponent } from './timeline/event-list/event-list.component';
+import { NewsItemComponent } from './timeline/event-list/news-item/news-item.component';
+import { NewsFormComponent } from './timeline/event-form/news-form/news-form.component';
+import { NewsViewComponent } from './timeline/event-view/news-view/news-view.component';
+import { TransactionItemComponent } from './timeline/event-list/transaction-item/transaction-item.component';
+import { TransactionFormComponent } from './timeline/event-form/transaction-form/transaction-form.component';
+import { TransactionViewComponent } from './timeline/event-view/transaction-view/transaction-view.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +29,9 @@ import { TransactionFormComponent } from 'src/app/timeline/event-form/transactio
         NewsItemComponent,
         TransactionItemComponent,
         NewsFormComponent,
-        TransactionFormComponent
+        TransactionFormComponent,
+        NewsViewComponent,
+        TransactionViewComponent
     ],
     imports: [BrowserModule, AppRoutingModule, FormsModule],
     providers: [],
