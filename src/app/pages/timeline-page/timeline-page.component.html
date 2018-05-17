@@ -1,8 +1,8 @@
 <div class="timeline">
     <h2 class="timeline__title">Timeline</h2>
     <app-event-sorting></app-event-sorting>
-    <div class="timeline__list" *ngIf="events.length > 0 else loading">
-        <app-event-list [eventList]="events"></app-event-list>
+    <div class="timeline__list" >
+        <app-event-list [eventList]="events | async"></app-event-list>
     </div>
     <div class="aqua-button">
         <span class="aqua-button__bg"></span>

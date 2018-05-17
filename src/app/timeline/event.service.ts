@@ -20,7 +20,7 @@ export class EventService {
     constructor() {}
 
     getEvents(): Observable<TimelineTypes[]> {
-        const events$ = of(this.events).pipe(delay(1000));
+        const events$ = of(this.events).pipe(delay(250));
         return events$;
     }
 
@@ -31,16 +31,32 @@ export class EventService {
             case EventTypes.News:
                 return of(<NewsEvent>this.events
                     .filter(event => event instanceof NewsEvent)
-                    .find(event => event.id === id)).pipe(delay(1200));
+                    .find(event => event.id === id)).pipe(delay(300));
             case EventTypes.Transaction:
                 return of(<TransactionEvent>this.events
                     .filter(event => event instanceof TransactionEvent)
-                    .find(event => event.id === id)).pipe(delay(1200));
+                    .find(event => event.id === id)).pipe(delay(300));
             }
     }
 
     addEvent(event: TimelineTypes): void {
         event.id = String(this.id++);
         this.events.push(event);
+    }
+
+    haveReadNews(id: string): void {
+        (this.events.filter(event => event instanceof NewsEvent)
+            .find(news => news.id === id) as NewsEvent).isUnread = false;
+    }
+
+    deleteTransaction(id: string): Observable<boolean> {
+        let result = false;
+        this.events = this.events
+            .filter(event => {
+                const shouldDelete = !(event.id === id && event instanceof TransactionEvent);
+                if (shouldDelete) { result = true; }
+                return shouldDelete;
+            });
+        return of(result).pipe(delay(500));
     }
 }

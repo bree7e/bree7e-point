@@ -10,11 +10,11 @@
         </div>
     </div>
 </div>
-<div class="aqua-button">
+<div class="aqua-button" *ngIf="showDeleteButton">
     <span class="aqua-button__bg"></span>
-    <a routerLink="/timeline" class="aqua-button__title">Удалить</a>
+    <a class="aqua-button__title" (click)="deleteTransaction()">Удалить</a>
 </div>
-<a routerLink="/" class="link-button">Вернуться на Timeline</a>
+<a routerLink="/timeline" class="link-button">Вернуться на Timeline</a>
 
 <ng-template #loading>
     <div class="transaction__loader">

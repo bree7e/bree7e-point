@@ -11,6 +11,7 @@ import { EventTypes } from 'src/app/shared/event-types.enum';
     styleUrls: ['./news-page.component.scss']
 })
 export class NewsPageComponent implements OnInit {
+    private id: string;
     @Input() news: NewsEvent;
 
     constructor(
@@ -19,12 +20,16 @@ export class NewsPageComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.id = this.route.snapshot.paramMap.get('id');
         this.getNews();
     }
 
     getNews(): void {
-        const id = this.route.snapshot.paramMap.get('id');
-        this.eventService.getEvent(id, EventTypes.News)
+        this.eventService.getEvent(this.id, EventTypes.News)
             .subscribe(news => (this.news = news));
+    }
+
+    haveRead(): void {
+        this.eventService.haveReadNews(this.id);
     }
 }

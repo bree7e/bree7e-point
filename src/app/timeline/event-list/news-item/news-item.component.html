@@ -1,5 +1,5 @@
 <div class="news" 
-    [class.news--read]="event.isRead" 
+    [class.news--read]="!event.isUnread" 
     routerLink="news/{{ event.id }}">
     <div class="news__title">
         {{ event.title }}
