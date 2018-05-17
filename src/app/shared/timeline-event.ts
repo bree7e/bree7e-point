@@ -15,7 +15,7 @@ export class NewsEvent extends TimelineEvent {
         public title: string,
         public content: string,
         date: Date = new Date(),
-        public isRead = false
+        public isUnread = true
     ) {
         super(date);
     }

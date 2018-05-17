@@ -6,9 +6,11 @@
         <app-news-form *ngSwitchCase="types.News"></app-news-form>
         <app-transaction-form *ngSwitchCase="types.Transaction"></app-transaction-form>
     </ng-container>
-    <div class="aqua-button">
-        <span class="aqua-button__bg"></span>
-        <a class="aqua-button__title" (click)="addEvent()">Добавить</a>
-    </div>
-    <a routerLink="/timeline" class="link-button">Timeline</a>
+</div>
+<div class="aqua-button">
+    <span class="aqua-button__bg"></span>
+    <a class="aqua-button__title" (click)="addEvent()">Добавить</a>
+</div>
+<div class="link-button">
+    <a routerLink="/" class="">Вернуться на Timeline</a>
 </div>

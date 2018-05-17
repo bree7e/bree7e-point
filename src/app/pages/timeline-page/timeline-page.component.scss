@@ -4,4 +4,7 @@
     &__list {
         @include page-block;
     }
+    &__loader {
+        @include page-block;
+    }
 }

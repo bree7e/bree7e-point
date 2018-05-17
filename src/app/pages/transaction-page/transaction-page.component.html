@@ -9,14 +9,12 @@
             {{ transaction.amount }}
         </div>
     </div>
-    <div class="aqua-button">
-        <span class="aqua-button__bg"></span>
-        <a routerLink="/timeline" class="aqua-button__title">Удалить</a>
-    </div>
-    <div class="link-button">
-        <a routerLink="/" class="">Вернуться</a>
-    </div>
 </div>
+<div class="aqua-button">
+    <span class="aqua-button__bg"></span>
+    <a routerLink="/timeline" class="aqua-button__title">Удалить</a>
+</div>
+<a routerLink="/" class="link-button">Вернуться на Timeline</a>
 
 <ng-template #loading>
     <div class="transaction__loader">
