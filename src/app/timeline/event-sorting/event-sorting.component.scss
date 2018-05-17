@@ -1,0 +1,12 @@
+@import '~src/styles/variables';
+
+.timeline-sorting {
+    &__type {
+        cursor: pointer;
+        color: $tochka-colors-text-dark-blue;
+        display: inline-block;
+        margin: 0 30px;
+        font-weight: 700;
+        border-bottom: 1px dotted $tochka-colors-text-dark-blue;
+    }
+}

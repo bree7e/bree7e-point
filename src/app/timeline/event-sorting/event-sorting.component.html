@@ -1,3 +1,19 @@
-<p>
-  event-sorting works!
-</p>
+<div class="timeline-sorting">
+    <div class="timeline-sorting__type" (click)="changeSorting(eventTypes.News)">
+        Дата
+        <ng-container [ngSwitch]="timelineSorting.order" *ngIf="timelineSorting.type == eventTypes.News">
+            <span *ngSwitchCase="sortingOrder.Asc">↑</span>
+            <span *ngSwitchCase="sortingOrder.Desc">↓</span>
+        </ng-container>
+        <span *ngIf="timelineSorting.order == sortingOrder.Unsorted">↑↓</span>
+    </div>
+    <div class="timeline-sorting__type" (click)="changeSorting(eventTypes.Transaction)">
+        Тип события
+        <ng-container [ngSwitch]="timelineSorting.order" *ngIf="timelineSorting.type == eventTypes.Transaction">
+            <span *ngSwitchCase="sortingOrder.Asc">↑</span>
+            <span *ngSwitchCase="sortingOrder.Desc">↓</span>
+        </ng-container>
+        <span *ngIf="timelineSorting.order == sortingOrder.Unsorted">↑↓</span>
+    </div>
+    timelineSorting = {{ timelineSorting.type }}
+</div>
