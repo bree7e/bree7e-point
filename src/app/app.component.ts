@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
                 new Date(2018, 4, 19),
                 Currencies.RUB,
                 500,
-                'Горнов А.В.'
+                'Горнов А.В.',
+                'Праздник'
             )
         );
         this.eventService.addEvent(
@@ -34,7 +35,8 @@ export class AppComponent implements OnInit {
                 new Date(2018, 1, 12),
                 Currencies.USD,
                 30,
-                'Иванов А.В., ИП'
+                'Иванов А.В., ИП',
+                'За товар'
             )
         );
         this.eventService.addEvent(
@@ -42,7 +44,8 @@ export class AppComponent implements OnInit {
                 new Date(),
                 Currencies.EUR,
                 -2000,
-                'Ребята, ООО'
+                'Ребята, ООО',
+                'За услуги'
             )
         );
         this.eventService.addEvent(

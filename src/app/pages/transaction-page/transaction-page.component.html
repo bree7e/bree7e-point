@@ -2,11 +2,14 @@
     <h2 class="transaction__title">Транзакция</h2>
     <div class="transaction__container" *ngIf="transaction else loading">
         <span class="transaction__date">{{ transaction.date | date:"dd.MM.yyyy" }}</span>
-        <div class="transaction__description">
-            {{ transaction.description }}
+        <div class="transaction__info">
+            Сумма: {{ transaction.amount }}{{ transaction.currency }}
         </div>
-        <div class="transaction__amount">
-            {{ transaction.amount }}
+        <div class="transaction__info">
+            От кого: {{ transaction.agent }}
+        </div>
+        <div class="transaction__info">
+            Описание: {{ transaction.description }}
         </div>
     </div>
 </div>
@@ -21,16 +24,3 @@
         Загрузка...
     </div>
 </ng-template>
-
-<!-- Финансовая транзакция:
-Сумма транзакции
-Валюта
-От кого транзакция
-Описание
-Приход или расход
-Дата
-Тип события
-
-При клике на событие открываем подробную информацию, 
-либо переход на отдельный роут в рамках вашего приложения, 
-либо красиво открыть на той же странице, где есть описание и кнопка “Удалить”. -->
