@@ -1,18 +1,19 @@
-<form class="news-form">
+<form class="news-form" [formGroup]="form">
     <div class="news-form__control">
         <label class="news-form__field-label" for="title">Заголовок</label>
-        <input class="news-form__field" type="text" id="title">
+        <input formControlName="title" class="news-form__field" type="text" id="title">
     </div>
     <div class="news-form__control">
         <label class="news-form__field-label" for="date">Дата</label>
-        <input class="news-form__field" type="date" id="date">
+        <input formControlName="date"class="news-form__field" type="date" id="date">
     </div>
     <div class="news-form__control">
         <label class="news-form__field-label" for="content">Содержание</label>
-        <textarea class="news-form__field" id="content" rows="8"></textarea>
+        <textarea formControlName="content" class="news-form__field" id="content" rows="8"></textarea>
         
     </div>
 </form>
+<p>Form: {{ form.value | json }}</p>
 
 <!-- 
 Новость:

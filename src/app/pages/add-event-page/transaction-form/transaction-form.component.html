@@ -1,30 +1,30 @@
-<form class="transaction-form">
+<form [formGroup]="form" class="transaction-form">
     <div class="transaction-form__control">
         <label class="transaction-form__field-label" for="currency">Валюта</label>
-        <select class="transaction-form__field" id="currency">
-            <!-- [(ngModel)]="eventType" -->
-            <ng-container *ngFor="let c of currencies | enum2Array">
-                <option value="{{c}}">{{c}}</option>
-            </ng-container>
+        <select formControlName="currency" class="transaction-form__field" id="currency">
+            <option value="{{currencies.RUB}}">RUB</option>
+            <option value="{{currencies.USD}}">USD</option>
+            <option value="{{currencies.EUR}}">EUR</option>
         </select>
     </div>
     <div class="transaction-form__control">
         <label class="transaction-form__field-label" for="amount">Сумма</label>
-        <input class="transaction-form__field" type="number" name="" id="amount">
+        <input formControlName="amount" class="transaction-form__field" type="number" id="amount">
     </div>
     <div class="transaction-form__control">
-        <label class="transaction-form__field-label" for="amount">Дата</label>
-        <input class="transaction-form__field" type="text" name="" id="amount">
+        <label class="transaction-form__field-label" for="date">Дата</label>
+        <input formControlName="date" class="transaction-form__field" type="date" id="date">
     </div>
     <div class="transaction-form__control">
         <label class="transaction-form__field-label" for="agent">От кого</label>
-        <input class="transaction-form__field" type="text" name="" id="agent">
+        <input formControlName="agent" class="transaction-form__field" type="text" id="agent">
     </div>
     <div class="transaction-form__control">
         <label class="transaction-form__field-label" for="description">Описание</label>
-        <textarea class="transaction-form__field" id="description" rows="8"></textarea>
+        <textarea formControlName="description" class="transaction-form__field" id="description" rows="8"></textarea>
     </div>
 </form>
+<p>Form: {{ form.value | json }}</p>
 
 <!-- Финансовая транзакция:
 Сумма транзакции

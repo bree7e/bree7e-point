@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,7 +31,12 @@ import { Enum2ArrayPipe } from './shared/enum2-array.pipe';
         TransactionFormComponent,
         Enum2ArrayPipe
     ],
-    imports: [BrowserModule, AppRoutingModule, FormsModule],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })
