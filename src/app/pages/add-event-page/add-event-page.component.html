@@ -1,7 +1,7 @@
 <div class="add-event">
     <h2 class="add-event__title">Добавить событие</h2>
-    <select class="add-event__type-select" [(ngModel)]="eventType">
-        <option value="{{types.News}}" selected>Новость</option>
+    <select class="add-event__type-select" (change)="changeType($event.target.value)">
+        <option value="{{types.News}}">Новость</option>
         <option value="{{types.Transaction}}">Транзакция</option>
     </select>
     <ng-container [ngSwitch]="eventType">

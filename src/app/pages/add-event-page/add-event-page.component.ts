@@ -12,12 +12,11 @@ import { EventService } from 'src/app/timeline/event.service';
     styleUrls: ['./add-event-page.component.scss']
 })
 export class AddEventPageComponent implements OnInit {
-    private newEvent: TimelineTypes;
+    public newEvent: TimelineTypes;
     private eventType: EventTypes;
     private types = EventTypes;
 
-    @Output()
-    addTimelineEvent = new EventEmitter<TimelineTypes>();
+    @Output() addTimelineEvent = new EventEmitter<TimelineTypes>();
 
     constructor(
         private eventService: EventService,
@@ -25,7 +24,7 @@ export class AddEventPageComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.changeType(EventTypes.Transaction);
+        this.changeType(EventTypes.News);
     }
 
     addEvent(): void {
@@ -34,8 +33,9 @@ export class AddEventPageComponent implements OnInit {
     }
 
     changeType(newType: EventTypes): void {
+        console.log('changeType to', newType);
         this.eventType = newType;
-        switch (newType) {
+        switch (Number(newType)) {
             case EventTypes.News:
                 this.newEvent = new NewsEvent('', '');
                 break;
