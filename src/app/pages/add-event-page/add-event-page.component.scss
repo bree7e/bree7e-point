@@ -1,0 +1,8 @@
+@import '~src/styles/shadows';
+
+.add-event {
+    &__type-select {
+        @include form-control;
+        width: inherit;
+    }
+}

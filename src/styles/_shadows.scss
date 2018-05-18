@@ -16,3 +16,16 @@
     margin-bottom: 20px;    
     background-color: #fff;
 }
+
+@mixin form-control {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+};
+
+@mixin form-control-label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    display: block;
+}

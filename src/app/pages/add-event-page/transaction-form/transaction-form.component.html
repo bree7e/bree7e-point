@@ -1,27 +1,28 @@
 <form class="transaction-form">
-    <div class="transaction-form__currency">
-        <label for="">Валюта</label>
-        <select> <!-- [(ngModel)]="eventType" -->
-            <ng-container *ngFor="let c of currencies">
-                <option value="c" [selected]="">{{c}}</option>
-            </ng-container>            
+    <div class="transaction-form__control">
+        <label class="transaction-form__field-label" for="currency">Валюта</label>
+        <select class="transaction-form__field" id="currency">
+            <!-- [(ngModel)]="eventType" -->
+            <ng-container *ngFor="let c of currencies | enum2Array">
+                <option value="{{c}}">{{c}}</option>
+            </ng-container>
         </select>
     </div>
-    <div class="transaction-form__amount">
-        <label for="">Сумма</label>
-        <input type="number" name="" id="">
+    <div class="transaction-form__control">
+        <label class="transaction-form__field-label" for="amount">Сумма</label>
+        <input class="transaction-form__field" type="number" name="" id="amount">
     </div>
-    <div class="transaction-form__date">
-        <label for="">Дата</label>
-        <input type="text" name="" id="">
+    <div class="transaction-form__control">
+        <label class="transaction-form__field-label" for="amount">Дата</label>
+        <input class="transaction-form__field" type="text" name="" id="amount">
     </div>
-    <div class="transaction-form__agent">
-        <label for="">От кого</label>
-        <input type="text" name="" id="">
+    <div class="transaction-form__control">
+        <label class="transaction-form__field-label" for="agent">От кого</label>
+        <input class="transaction-form__field" type="text" name="" id="agent">
     </div>
-    <div class="transaction-form__description">
-        <label for="">Описание</label>
-        <input type="text" name="" id="">
+    <div class="transaction-form__control">
+        <label class="transaction-form__field-label" for="description">Описание</label>
+        <textarea class="transaction-form__field" id="description" rows="8"></textarea>
     </div>
 </form>
 

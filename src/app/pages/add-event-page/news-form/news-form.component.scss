@@ -1,5 +1,14 @@
+@import '~src/styles/shadows';
+
 .news-form {
+    @include page-block;
+    &__control {
+        margin-bottom: 16px;
+    }
+    &__field{
+        @include form-control;
+    }
     &__field-label {
-        display: block;
+        @include form-control-label;
     }
 }

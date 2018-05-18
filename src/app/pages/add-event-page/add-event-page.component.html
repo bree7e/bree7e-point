@@ -1,6 +1,6 @@
 <div class="add-event">
     <h2 class="add-event__title">Добавить событие</h2>
-    <select [(ngModel)]="eventType">
+    <select class="add-event__type-select" [(ngModel)]="eventType">
         <option value="{{types.News}}" selected>Новость</option>
         <option value="{{types.Transaction}}">Транзакция</option>
     </select>
@@ -13,6 +13,15 @@
     <span class="aqua-button__bg"></span>
     <a class="aqua-button__title" (click)="addEvent()">Добавить</a>
 </div>
-<div class="link-button">
-    <a routerLink="/" class="">Вернуться на Timeline</a>
+<a routerLink="/timeline" class="link-button">Вернуться на Timeline</a>
+
+<!-- <div class="event-select">
+    <select (change)="selectEventType($event.target.value)">
+        <option *ngFor="let value of eventTypes" value={{value}}>{{value}}</option>
+    </select>
 </div>
+<ng-container [ngSwitch]="selectedEventType">
+    <app-add-news-event *ngSwitchCase="'NEWS'"></app-add-news-event>
+    <app-add-transaction-event *ngSwitchCase="'TRANSACTION'"></app-add-transaction-event>
+</ng-container>
+<br/> -->

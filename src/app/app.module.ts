@@ -14,6 +14,7 @@ import { EventSortingComponent } from './timeline/event-sorting/event-sorting.co
 import { EventListComponent } from './timeline/event-list/event-list.component';
 import { NewsItemComponent } from './timeline/event-list/news-item/news-item.component';
 import { TransactionItemComponent } from './timeline/event-list/transaction-item/transaction-item.component';
+import { Enum2ArrayPipe } from './shared/enum2-array.pipe';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { TransactionItemComponent } from './timeline/event-list/transaction-item
         NewsItemComponent,
         TransactionItemComponent,
         NewsFormComponent,
-        TransactionFormComponent
+        TransactionFormComponent,
+        Enum2ArrayPipe
     ],
     imports: [BrowserModule, AppRoutingModule, FormsModule],
     providers: [],

@@ -1,0 +1,14 @@
+@import "~src/styles/shadows";
+
+.transaction-form {
+    @include page-block;
+    &__control {
+        margin-bottom: 16px;
+    }
+    &__field{
+        @include form-control;
+    }
+    &__field-label {
+        @include form-control-label;
+    }
+}
