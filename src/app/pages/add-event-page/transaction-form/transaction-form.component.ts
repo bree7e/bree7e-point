@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Currencies } from 'src/app/shared/currencies.enum';
@@ -11,6 +11,7 @@ import { Currencies } from 'src/app/shared/currencies.enum';
 export class TransactionFormComponent implements OnInit {
     public currencies = Currencies;
     public form: FormGroup;
+    @Output() formChange = new EventEmitter();
 
     constructor(public fb: FormBuilder) {
       this.form = this.fb.group({
@@ -22,5 +23,9 @@ export class TransactionFormComponent implements OnInit {
       });
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+      this.form.valueChanges.subscribe(formValues => {
+        this.formChange.emit(formValues);
+    });
+    }
 }

@@ -1,8 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { TimelineTypes, NewsEvent, TransactionEvent } from 'src/app/shared/timeline-event';
 import { EventTypes } from '../../shared/event-types.enum';
 import { Currencies } from '../../shared/currencies.enum';
+import { EventService } from 'src/app/timeline/event.service';
 
 @Component({
     selector: 'app-add-event-page',
@@ -12,23 +14,26 @@ import { Currencies } from '../../shared/currencies.enum';
 export class AddEventPageComponent implements OnInit {
     private newEvent: TimelineTypes;
     private eventType: EventTypes;
-    // необходимо для доступа к enum из шаблона
     private types = EventTypes;
 
     @Output()
-    addTimelineEvent: EventEmitter<TimelineTypes> = new EventEmitter();
+    addTimelineEvent = new EventEmitter<TimelineTypes>();
 
-    constructor() {}
+    constructor(
+        private eventService: EventService,
+        private router: Router,
+    ) {}
 
     ngOnInit() {
-        this.changeType(EventTypes.News);
+        this.changeType(EventTypes.Transaction);
     }
 
-    addEvent() {
-        console.log('addTimelineEvent click');
+    addEvent(): void {
+        this.eventService.addEvent(this.newEvent);
+        this.router.navigate(['timeline']);
     }
 
-    changeType(newType: EventTypes) {
+    changeType(newType: EventTypes): void {
         this.eventType = newType;
         switch (newType) {
             case EventTypes.News:
@@ -36,6 +41,22 @@ export class AddEventPageComponent implements OnInit {
                 break;
             case EventTypes.Transaction:
                 this.newEvent = new TransactionEvent(new Date(), Currencies.RUB, 0, '');
+                break;
+        }
+    }
+
+    onFormChange(type: EventTypes, formValues: any): void {
+        this.newEvent.date = new Date(formValues.date);
+        switch (type) {
+            case EventTypes.News:
+                (this.newEvent as NewsEvent).title = formValues.title;
+                (this.newEvent as NewsEvent).content = formValues.content;
+                break;
+            case EventTypes.Transaction:
+                (this.newEvent as TransactionEvent).description = formValues.description;
+                (this.newEvent as TransactionEvent).currency = formValues.currency;
+                (this.newEvent as TransactionEvent).amount = formValues.amount;
+                (this.newEvent as TransactionEvent).agent = formValues.agent;
                 break;
         }
     }

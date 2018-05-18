@@ -5,8 +5,10 @@
         <option value="{{types.Transaction}}">Транзакция</option>
     </select>
     <ng-container [ngSwitch]="eventType">
-        <app-news-form *ngSwitchCase="types.News"></app-news-form>
-        <app-transaction-form *ngSwitchCase="types.Transaction"></app-transaction-form>
+        <app-news-form *ngSwitchCase="types.News" 
+            (formChange)="onFormChange(types.News, $event)"></app-news-form>
+        <app-transaction-form *ngSwitchCase="types.Transaction"
+            (formChange)="onFormChange(types.Transaction, $event)"></app-transaction-form>
     </ng-container>
 </div>
 <div class="aqua-button">
@@ -15,13 +17,4 @@
 </div>
 <a routerLink="/timeline" class="link-button">Вернуться на Timeline</a>
 
-<!-- <div class="event-select">
-    <select (change)="selectEventType($event.target.value)">
-        <option *ngFor="let value of eventTypes" value={{value}}>{{value}}</option>
-    </select>
-</div>
-<ng-container [ngSwitch]="selectedEventType">
-    <app-add-news-event *ngSwitchCase="'NEWS'"></app-add-news-event>
-    <app-add-transaction-event *ngSwitchCase="'TRANSACTION'"></app-add-transaction-event>
-</ng-container>
-<br/> -->
+<p>newEvent: {{ newEvent | json }}</p>
