@@ -9,6 +9,7 @@ import { NewsEvent } from 'src/app/shared/timeline-event';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 storiesOf('Welcome', module).add('to Storybook', () => ({
   component: Welcome,
@@ -53,8 +54,10 @@ storiesOf('Another Button', module).add('button with link to another story', () 
 storiesOf('NewsItemComponent', module)
   .addDecorator(
     moduleMetadata({
-      imports: [RouterModule.forRoot([])],
-      schemas: [],
+      imports: [RouterModule.forRoot([
+        { path: 'iframe.html', component: NewsItemComponent }
+      ])],
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [],
       providers: [
         {
@@ -64,21 +67,27 @@ storiesOf('NewsItemComponent', module)
       ],
     })
   )
-  .add('example', () => ({
+  .add('example 1', () => ({
     component: NewsItemComponent,
     props: {
       event: new NewsEvent(
         'Персональное предложение',
         'Кредит по паспорту на особых условиях. Предложение действительно до 31 мая 2018 г.',
         new Date(2018, 5, 5)
-    )
+      )
     }
   }))
-  .add('with action', () => ({
+  .add('example 2', () => ({
     component: NewsItemComponent,
     props: {
-      title: 'A card...',
-      subtitle: 'Waiting to be clicked-on',
-      btnClicked: action('👊 Button was clicked')
+      event: new NewsEvent(
+        'Внимание мошенники',
+        `'НИКОГДА НЕ ОТПРАВЛЯЙТЕ ДЕНЬГИ НЕЗНАКОМЫМ ЛИЦАМ НА ИХ ЭЛЕКТРОННЫЕ СЧЕТА
+        Помните, что вероятность выиграть приз, не принимая участия в розыгрыше стремится к нулю, а
+        вероятность возврата денег, перечисленных на анонимный электронный кошелек злоумышленников, и того
+        меньше.`,
+        new Date(2018, 3, 2),
+        true
+      )
     }
   }));
