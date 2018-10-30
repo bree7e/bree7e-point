@@ -1,9 +1,14 @@
-import { storiesOf } from '@storybook/angular';
+import { storiesOf, moduleMetadata } from '@storybook/angular';
 import { withNotes } from '@storybook/addon-notes';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 import { Welcome, Button } from '@storybook/angular/demo';
+import { NewsItemComponent } from 'src/app/timeline/event-list/news-item/news-item.component';
+import { NewsEvent } from 'src/app/shared/timeline-event';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 storiesOf('Welcome', module).add('to Storybook', () => ({
   component: Welcome,
@@ -44,3 +49,36 @@ storiesOf('Another Button', module).add('button with link to another story', () 
     onClick: linkTo('Welcome'),
   },
 }));
+
+storiesOf('NewsItemComponent', module)
+  .addDecorator(
+    moduleMetadata({
+      imports: [RouterModule.forRoot([])],
+      schemas: [],
+      declarations: [],
+      providers: [
+        {
+          provide: APP_BASE_HREF,
+          useValue: '/',
+        },
+      ],
+    })
+  )
+  .add('example', () => ({
+    component: NewsItemComponent,
+    props: {
+      event: new NewsEvent(
+        'Персональное предложение',
+        'Кредит по паспорту на особых условиях. Предложение действительно до 31 мая 2018 г.',
+        new Date(2018, 5, 5)
+    )
+    }
+  }))
+  .add('with action', () => ({
+    component: NewsItemComponent,
+    props: {
+      title: 'A card...',
+      subtitle: 'Waiting to be clicked-on',
+      btnClicked: action('👊 Button was clicked')
+    }
+  }));
