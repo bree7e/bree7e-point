@@ -7,7 +7,7 @@ import { Welcome, Button } from '@storybook/angular/demo';
 import { NewsItemComponent } from 'src/app/timeline/event-list/news-item/news-item.component';
 import { NewsEvent } from 'src/app/shared/timeline-event';
 import { AppRoutingModule } from 'src/app/app-routing.module';
-import { RouterModule } from '@angular/router';
+import { RouterTestingModule  } from '@angular/router/testing';
 import { APP_BASE_HREF } from '@angular/common';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
@@ -16,8 +16,7 @@ storiesOf('Welcome', module).add('to Storybook', () => ({
   props: {},
 }));
 
-storiesOf('Button', module)
-  .add('with text', () => ({
+storiesOf('Button', module).add('with text', () => ({
     component: Button,
     props: {
       text: 'Hello Button',
@@ -54,17 +53,12 @@ storiesOf('Another Button', module).add('button with link to another story', () 
 storiesOf('NewsItemComponent', module)
   .addDecorator(
     moduleMetadata({
-      imports: [RouterModule.forRoot([
-        { path: 'iframe.html', component: NewsItemComponent }
+      imports: [RouterTestingModule.withRoutes([
+        { path: '**', component: NewsItemComponent },
       ])],
-      schemas: [NO_ERRORS_SCHEMA],
+      schemas: [],
       declarations: [],
-      providers: [
-        {
-          provide: APP_BASE_HREF,
-          useValue: '/',
-        },
-      ],
+      providers: [],
     })
   )
   .add('example 1', () => ({
