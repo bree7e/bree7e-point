@@ -32,7 +32,7 @@ import { Enum2ArrayPipe } from './shared/enum2-array.pipe';
         Enum2ArrayPipe
     ],
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule
