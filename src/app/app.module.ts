@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -33,6 +33,7 @@ import { Enum2ArrayPipe } from './shared/enum2-array.pipe';
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
+        BrowserTransferStateModule,
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule
