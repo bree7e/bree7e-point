@@ -4,7 +4,9 @@
         (changeSortingType)="onChangeSorting($event)"
     ></app-event-sorting>
     <div class="timeline__list" >
-        <app-event-list [eventList]="events | async"></app-event-list>
+        <ng-container *ngIf="(events$ | async) as eventList else loading">
+            <app-event-list [eventList]="eventList"></app-event-list>
+        </ng-container>
     </div>
     <div class="aqua-button">
         <span class="aqua-button__bg"></span>
@@ -13,7 +15,5 @@
 </div>
 
 <ng-template #loading>
-    <div class="timeline__loader">
-        Загрузка...
-    </div>
+    Загрузка...
 </ng-template>

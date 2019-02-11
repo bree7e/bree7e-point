@@ -2,15 +2,12 @@ import { Currencies } from './currencies.enum';
 
 export abstract class TimelineEvent {
     public id: string;
-
+    abstract type: string;
     constructor(public date: Date) {}
-
-    get type() {
-        return this.constructor.name;
-    }
 }
 
 export class NewsEvent extends TimelineEvent {
+    public type = 'NewsEvent';
     constructor(
         public title: string,
         public content: string,
@@ -22,6 +19,7 @@ export class NewsEvent extends TimelineEvent {
 }
 
 export class TransactionEvent extends TimelineEvent {
+    public type = 'TransactionEvent';
     constructor(
         date: Date,
         public currency = Currencies.RUB,

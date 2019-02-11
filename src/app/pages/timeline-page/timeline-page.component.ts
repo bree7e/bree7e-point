@@ -11,7 +11,7 @@ import { TimelineSorting, SortingOrder } from 'src/app/timeline/event-sorting/ev
     styleUrls: ['./timeline-page.component.scss']
 })
 export class TimelinePageComponent implements OnInit {
-    public events: Observable<TimelineEvent[]>;
+    public events$: Observable<TimelineEvent[]>;
 
     constructor(private eventService: EventService) {}
 
@@ -24,6 +24,6 @@ export class TimelinePageComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.events = this.eventService.getEvents();
+        this.events$ = this.eventService.getEvents();
     }
 }
