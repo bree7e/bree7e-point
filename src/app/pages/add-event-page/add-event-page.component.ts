@@ -13,8 +13,8 @@ import { EventService } from 'src/app/timeline/event.service';
 })
 export class AddEventPageComponent implements OnInit {
     public newEvent: TimelineTypes;
-    private eventType: EventTypes;
-    private types = EventTypes;
+    public eventType: EventTypes;
+    public types = EventTypes;
 
     @Output() addTimelineEvent = new EventEmitter<TimelineTypes>();
 

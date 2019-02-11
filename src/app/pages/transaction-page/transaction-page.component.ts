@@ -11,7 +11,7 @@ import { EventTypes } from '../../shared/event-types.enum';
   styleUrls: ['./transaction-page.component.scss']
 })
 export class TransactionPageComponent implements OnInit {
-    private showDeleteButton = true;
+    public showDeleteButton = true;
     private id: string;
     @Input() transaction: TransactionEvent;
 
