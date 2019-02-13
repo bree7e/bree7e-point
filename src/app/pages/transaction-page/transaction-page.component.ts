@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
-import { EventService } from 'src/app/timeline/event.service';
 import { TransactionEvent } from 'src/app/shared/timeline-event';
 import { EventTypes } from '../../shared/event-types.enum';
+import { EventService } from '../timeline-page/timeline/event.service';
 
 @Component({
   selector: 'app-transaction-page',

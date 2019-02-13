@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EventService } from 'src/app/timeline/event.service';
 import { Currencies } from 'src/app/shared/currencies.enum';
 import { TransactionEvent, NewsEvent } from 'src/app/shared/timeline-event';
+import { EventService } from './pages/timeline-page/timeline/event.service';
 
 @Component({
     selector: 'app-root',

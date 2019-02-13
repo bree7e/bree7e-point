@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, of, BehaviorSubject } from 'rxjs';
-import { filter, delay } from 'rxjs/operators';
+import { delay } from 'rxjs/operators';
 
 import {
     NewsEvent,
@@ -9,11 +9,8 @@ import {
     TimelineTypes,
 } from 'src/app/shared/timeline-event';
 import { EventTypes } from 'src/app/shared/event-types.enum';
-import {
-    TimelineSorting,
-    SortingOrder,
-} from 'src/app/timeline/event-sorting/event-sorting.component';
-import { SortingTypes } from '../shared/sorting-types.enum';
+import { TimelineSorting, SortingOrder } from './event-sorting/event-sorting.component';
+import { SortingTypes } from 'src/app/shared/sorting-types.enum';
 
 @Injectable({
     providedIn: 'root',

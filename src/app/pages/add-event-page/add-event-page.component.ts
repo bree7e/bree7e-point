@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { TimelineTypes, NewsEvent, TransactionEvent } from 'src/app/shared/timeline-event';
 import { EventTypes } from '../../shared/event-types.enum';
 import { Currencies } from '../../shared/currencies.enum';
-import { EventService } from 'src/app/timeline/event.service';
+import { EventService } from '../timeline-page/timeline/event.service';
 
 @Component({
     selector: 'app-add-event-page',
