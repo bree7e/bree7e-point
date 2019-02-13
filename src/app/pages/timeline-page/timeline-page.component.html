@@ -4,7 +4,7 @@
         (changeSortingType)="onChangeSorting($event)"
     ></app-event-sorting>
     <div class="timeline__list" >
-        <app-event-list [eventList]="events | async"></app-event-list>
+        <app-event-list [eventList]="events$ | async"></app-event-list>
     </div>
     <div class="aqua-button">
         <span class="aqua-button__bg"></span>
