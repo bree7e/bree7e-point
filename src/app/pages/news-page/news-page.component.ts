@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { NewsEvent } from 'src/app/shared/timeline-event';
-import { EventService } from 'src/app/timeline/event.service';
 import { EventTypes } from 'src/app/shared/event-types.enum';
+import { EventService } from '../timeline-page/timeline/event.service';
 
 @Component({
     selector: 'app-news-page',

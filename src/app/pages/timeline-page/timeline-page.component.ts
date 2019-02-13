@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TimelineEvent } from 'src/app/shared/timeline-event';
-import { EventService } from 'src/app/timeline/event.service';
 import { Observable } from 'rxjs';
-import { TimelineSorting, SortingOrder } from 'src/app/timeline/event-sorting/event-sorting.component';
+import { tap } from 'rxjs/operators';
+
+import { TimelineEvent } from 'src/app/shared/timeline-event';
+import { EventService } from './timeline/event.service';
+import { TimelineSorting, SortingOrder } from './timeline/event-sorting/event-sorting.component';
 
 @Component({
     selector: 'app-timeline-page',
@@ -24,6 +26,7 @@ export class TimelinePageComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.events$ = this.eventService.getEvents();
+        this.events$ = this.eventService.events$.pipe(tap(e => console.log(e)));
+        this.eventService.loadNextEvents();
     }
 }

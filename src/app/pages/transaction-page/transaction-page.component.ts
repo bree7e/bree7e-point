@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { EventService } from 'src/app/timeline/event.service';
+import { Observable } from 'rxjs';
+
 import { TransactionEvent } from 'src/app/shared/timeline-event';
 import { EventTypes } from '../../shared/event-types.enum';
+import { EventService } from '../timeline-page/timeline/event.service';
 
 @Component({
   selector: 'app-transaction-page',
@@ -13,7 +15,7 @@ import { EventTypes } from '../../shared/event-types.enum';
 export class TransactionPageComponent implements OnInit {
     public showDeleteButton = true;
     private id: string;
-    @Input() transaction: TransactionEvent;
+    public transaction$: Observable<TransactionEvent>;
 
     constructor(
         private route: ActivatedRoute,
@@ -23,21 +25,12 @@ export class TransactionPageComponent implements OnInit {
 
     ngOnInit(): void {
         this.id = this.route.snapshot.paramMap.get('id');
-        this.getTransaction();
-    }
-
-    getTransaction(): void {
-        this.eventService.getEvent(this.id, EventTypes.Transaction)
-            .subscribe(t => (this.transaction = t));
+        this.transaction$ = this.eventService.getEvent(this.id, EventTypes.Transaction);
     }
 
     deleteTransaction(): void {
         this.showDeleteButton = false;
-        this.eventService.deleteTransaction(this.id)
-            .subscribe(deleted => {
-                if (deleted) {
-                    this.router.navigate(['timeline']);
-                }
-            });
+        this.eventService.deleteTransaction(this.id);
+        this.router.navigate(['timeline']);
     }
 }
