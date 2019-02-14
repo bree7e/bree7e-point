@@ -3,7 +3,7 @@ import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { makeStateKey, TransferState } from '@angular/platform-browser';
 
 import { Observable, of, BehaviorSubject } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay, skip } from 'rxjs/operators';
 
 import {
     NewsEvent,
@@ -69,6 +69,7 @@ export class EventService {
     private id = 0;
     private sorting: TimelineSorting;
     private _eventsObserver = new BehaviorSubject<TimelineTypes[]>([]);
+    // skip one to fake init
     readonly events$ = this._eventsObserver.asObservable().pipe(delay(250));
     private set _events(value: TimelineTypes[]) {
         this._eventsObserver.next(value);
@@ -84,7 +85,7 @@ export class EventService {
         this.clearSorting();
     }
 
-    loadNextEvents(): void {
+    initLoadEvents(): void {
         if (isPlatformBrowser(this.platformId)) {
             // Client only code.
             // platformId === browser
@@ -103,7 +104,6 @@ export class EventService {
             this.transferState.remove(TYAPK_KEY);
             this._events = transferEvents;
         } else {
-            // backand call
             const backendData = DATA.map((item, index) => {
                 item.id = String(index);
                 return item;
@@ -151,17 +151,8 @@ export class EventService {
     }
 
     deleteTransaction(id: string): void {
-        let result = false;
-        this._eventsObserver.next(
-            this._eventsObserver.value.filter(event => {
-                const shouldDelete = !(
-                    event.id === id && event instanceof TransactionEvent
-                );
-                if (shouldDelete) {
-                    result = true;
-                }
-                return shouldDelete;
-            })
+        this._events = this._eventsObserver.value.filter(
+            event => !(event.id === id && event instanceof TransactionEvent)
         );
     }
 

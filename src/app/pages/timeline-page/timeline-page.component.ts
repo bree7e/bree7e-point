@@ -27,6 +27,5 @@ export class TimelinePageComponent implements OnInit {
 
     ngOnInit() {
         this.events$ = this.eventService.events$.pipe(tap(e => console.log(e)));
-        this.eventService.loadNextEvents();
     }
 }
