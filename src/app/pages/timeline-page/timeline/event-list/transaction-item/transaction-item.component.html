@@ -1,4 +1,4 @@
-<div class="transaction" routerLink="transactions/{{ event.id }}">
+<a class="transaction" [routerLink]="['transactions', event.id ]">
     <div class="transaction__date">
         {{ event.date | date:"dd.MM.yyyy" }}
     </div>
@@ -11,7 +11,7 @@
     <div class="transaction__agent">
         {{ event.agent }}
     </div>
-</div>
+</a>
 
 <!-- У финансовой транзакции в списке отображаем приход или расход 
     (выделить цветом и знаком +-), сумму, валюта, дата, и от кого транкзация. -->

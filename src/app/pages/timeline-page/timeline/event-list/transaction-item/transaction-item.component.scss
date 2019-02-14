@@ -4,6 +4,8 @@
     font-weight: 700;
     padding: 15px;
     display: flex;
+    text-decoration: none;
+    color: $tochka-colors-text-black;
     &__date {
         width: 100px;
         color: $tochka-colors-text-light-gray;

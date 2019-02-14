@@ -1,10 +1,10 @@
-<div class="news" 
+<a class="news" 
     [class.news--read]="!event.isUnread" 
-    routerLink="news/{{ event.id }}">
-    <div class="news__title">
+    [routerLink]="['news', event.id ]">
+    <span class="news__title">
         {{ event.title }}
-    </div>
-</div>
+    </span>
+</a>
 
 <!-- У новости в списке отображаем только заголовок. 
     При клике на событие открываем подробную вкладку, где есть описание и кнопка “Ознакомлен”, 

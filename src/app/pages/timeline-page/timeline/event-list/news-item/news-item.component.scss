@@ -3,6 +3,9 @@
 .news {
     padding: 15px;
     font-weight: 700;
+    text-decoration: none;
+    display: block;
+    color: $tochka-colors-text-black;
     &--read {
         font-weight: 400;
         color: $tochka-colors-text-light-gray;
